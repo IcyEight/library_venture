@@ -187,6 +187,7 @@ angular.module('app.controllers', [])
     $rootScope.extras=true;
 })
 
+// to access $root.extras and get_total()
 .controller('indexCtrl', function($scope,$rootScope,sharedUtils,$ionicHistory,$state,$ionicSideMenuDelegate,sharedCartService) {
 
     //Check if user already logged in
@@ -400,7 +401,7 @@ angular.module('app.controllers', [])
 
         if(edit_val!=null) {
           //Update  address
-          if(res!=null){ // res ==null  => close 
+          if(res!=null){ // res ==null  => close
             fireBaseData.refUser().child($scope.user_info.uid).child("address").child(edit_val.$id).update({    // set
               nickname: res.nickname,
               address: res.address,

@@ -1,10 +1,10 @@
 /* Utilities */
 .app-icon {
-    background: rgba(0, 0, 0, 0) url("../img/app-icon.png") repeat scroll center center / cover ;
+    background: rgba(0, 0, 0, 0) url("../img/appLogo.png") repeat scroll center center / cover ;
     border-radius: 0%;
-    height: 50px;
+    height: 130px;
     margin: 0 auto;
-    width: 50px;
+    width: 200px;
 }
 
 

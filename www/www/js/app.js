@@ -13,7 +13,7 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.services',
     $ionicConfigProvider.tabs.position('bottom'); // other values: top
 })
 .run(function($ionicPlatform,$rootScope) {
-
+    // $root.extras is used for hiding user features, ie cart icon, menu drawer, navigation icon etc.
     $rootScope.extras = false;
 
   $ionicPlatform.ready(function() {
