@@ -1,43 +1,37 @@
 <ion-view style="" class=" " id="page15" title="Statistics">
+
   <ion-content class="has-header" padding="true"></ion-content>
 
-  <div style="
-    position: absolute;
+  <ion-scroll zooming="true" direction="xy" style="width: inherit; height: inherit">
+
+    <div style="position: absolute;
     margin: auto;
     top: 0;
     right: 200px;
-    bottom: 500px;
+    bottom: 450px;
     left: 0;
     width: 100px;
-    height: 100px;
-">
-    <p>Trials</p>
-    <canvas id="pie" class="chart chart-line" chart-data="data"
-            chart-labels="labels" chart-series="series" chart-options="options"
-            chart-dataset-override="datasetOverride" chart-click="onClick"
-            style="align-content:right;  width: 688px; height: 344px;">
-    </canvas>
+    height: 100px;">
+      <p>Trials</p>
+      <canvas id="pie" class="chart chart-line" chart-data="data"
+              chart-labels="labels" chart-series="series" chart-options="options"
+              chart-dataset-override="datasetOverride" chart-click="onClick"
+              style="align-content:right;  width: 688px; height: 344px;">
+      </canvas>
 
-    <p>Attendance Per Month</p>
-    <canvas id="line" class="chart chart-line" chart-data="data"
-            chart-labels="labels" chart-series="series" chart-options="options"
-            chart-dataset-override="datasetOverride" chart-click="onClick"
-            style="align-content:left;  width: 688px; height: 344px;">
-    </canvas>
+      <p>Attendance Per Month</p>
+      <canvas id="line" class="chart chart-line" chart-data="data"
+              chart-labels="labels" chart-series="series" chart-options="options"
+              chart-dataset-override="datasetOverride" chart-click="onClick"
+              style="align-content:left;  width: 688px; height: 344px;">
+      </canvas>
 
-    <p>Attendance Per Event</p>
-    <canvas id="bar" class="chart chart-line" chart-data="data"
-            chart-labels="labels" chart-series="series" chart-options="options"
-            chart-dataset-override="datasetOverride" chart-click="onClick"
-            style="align-content:center;  width: 688px; height: 344px;">
-    </canvas>
-  </div>
-
-
-  <div style="width: 279px; height: 35px;" class="spacer"></div>
-
-
-  <div style="width: 279px; height: 35px;" class="spacer"></div>
-
-
+      <p>Attendance Per Event</p>
+      <canvas id="bar" class="chart chart-line" chart-data="data"
+              chart-labels="labels" chart-series="series" chart-options="options"
+              chart-dataset-override="datasetOverride" chart-click="onClick"
+              style="align-content:center;  width: 688px; height: 344px;">
+      </canvas>
+    </div>
+  </ion-scroll>
 </ion-view>
