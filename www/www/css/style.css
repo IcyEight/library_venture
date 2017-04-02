@@ -298,3 +298,8 @@ margin-top:10px;
 .item-thumbnail-left .item-content .item-image, .item-thumbnail-left .item-content>img:first-child, .item-thumbnail-left .item-image, .item-thumbnail-left>img:first-child {
   border-radius: initial;
 }
+
+/*dropdown*/
+.item-select {
+  margin-top: 30px; /* Or whatever you'd like the width to be */
+}
