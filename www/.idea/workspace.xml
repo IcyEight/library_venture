@@ -105,8 +105,8 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="menu2.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/www/templates/menu2.html">
+      <file leaf-file-name="upcomingEvents.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/templates/upcomingEvents.html">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-16.32258" vertical-offset="0" max-vertical-offset="1144">
               <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
@@ -877,7 +877,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/www/templates/menu2.html">
+    <entry file="file://$PROJECT_DIR$/www/templates/upcomingEvents.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-16.32258" vertical-offset="0" max-vertical-offset="1144">
           <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />

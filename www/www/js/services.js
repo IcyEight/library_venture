@@ -1,51 +1,51 @@
 angular.module('app.services', [])
 
 
-.factory('fireBaseData', function($firebase) {
-	var ref = new Firebase("https://test-773a4.firebaseio.com/"),
-    refEvent = new Firebase("https://test-773a4.firebaseio.com/events"),
+  .factory('fireBaseData', function ($firebase) {
+    var ref = new Firebase("https://test-773a4.firebaseio.com/"),
+      refEvent = new Firebase("https://test-773a4.firebaseio.com/events"),
 
-    refCart = new Firebase("https://test-773a4.firebaseio.com/cart"),
-    refUser = new Firebase("https://test-773a4.firebaseio.com/users"),
-    refCategory = new Firebase("https://test-773a4.firebaseio.com/category"),
-    refOrder = new Firebase("https://test-773a4.firebaseio.com/orders"),
-    refFeatured = new Firebase("https://test-773a4.firebaseio.com/featured"),
-    refMenu = new Firebase("https://test-773a4.firebaseio.com/menu");
-  return {
-    ref: function() {
-      return ref;
-    },
-    refEvent: function() {
-      return refEvent;
-    },
-    refCart: function() {
-      return refCart;
-    },
-    refUser: function() {
-      return refUser;
-    },
-    refCategory: function() {
-      return refCategory;
-    },
-    refOrder: function() {
-      return refOrder;
-    },
-    refFeatured: function() {
-      return refFeatured;
-    },
-    refMenu: function() {
-      return refMenu;
+      refCart = new Firebase("https://test-773a4.firebaseio.com/cart"),
+      refUser = new Firebase("https://test-773a4.firebaseio.com/users"),
+      refCategory = new Firebase("https://test-773a4.firebaseio.com/category"),
+      refOrder = new Firebase("https://test-773a4.firebaseio.com/orders"),
+      refFeatured = new Firebase("https://test-773a4.firebaseio.com/featured"),
+      refMenu = new Firebase("https://test-773a4.firebaseio.com/menu");
+    return {
+      ref: function () {
+        return ref;
+      },
+      refEvent: function () {
+        return refEvent;
+      },
+      refCart: function () {
+        return refCart;
+      },
+      refUser: function () {
+        return refUser;
+      },
+      refCategory: function () {
+        return refCategory;
+      },
+      refOrder: function () {
+        return refOrder;
+      },
+      refFeatured: function () {
+        return refFeatured;
+      },
+      refMenu: function () {
+        return refMenu;
+      }
     }
-  }
-})
+  })
 
 
-.factory('sharedUtils',['$ionicLoading','$ionicPopup', function($ionicLoading,$ionicPopup){
+  .factory('sharedUtils', ['$ionicLoading', '$ionicPopup', function ($ionicLoading, $ionicPopup) {
 
 
-    var functionObj={};
+    var functionObj = {};
 
-    functionObj.showLoading=function(){
+    functionObj.showLoading = function () {
       $ionicLoading.show({
         content: '<i class=" ion-loading-c"></i> ', // The text to display in the loading indicator
         animation: 'fade-in', // The animation to use
@@ -54,12 +54,12 @@ angular.module('app.services', [])
         showDelay: 0 // The delay in showing the indicator
       });
     };
-    functionObj.hideLoading=function(){
+    functionObj.hideLoading = function () {
       $ionicLoading.hide();
     };
 
 
-    functionObj.showAlert = function(title,message) {
+    functionObj.showAlert = function (title, message) {
       var alertPopup = $ionicPopup.alert({
         title: title,
         template: message
@@ -68,96 +68,91 @@ angular.module('app.services', [])
 
     return functionObj;
 
-}])
+  }])
 
 
+  .factory('sharedCartService', ['$ionicPopup', 'fireBaseData', '$firebaseArray', function ($ionicPopup, fireBaseData, $firebaseArray) {
 
+    var uid;// uid is temporary user_id
 
-  .factory('sharedCartService', ['$ionicPopup','fireBaseData','$firebaseArray',function($ionicPopup, fireBaseData, $firebaseArray){
-
-    var uid ;// uid is temporary user_id
-
-    var cart={}; // the main Object
-
+    var cart = {}; // the main Object
 
     //Check if user already logged in
-    firebase.auth().onAuthStateChanged(function(user) {
+    firebase.auth().onAuthStateChanged(function (user) {
       if (user) {
-        uid=user.uid;
+        uid = user.uid;
         cart.cart_items = $firebaseArray(fireBaseData.refCart().child(uid));
       }
     });
 
 
-
-
     //Add to Cart
-    cart.add = function(item) {
+    cart.add = function (item) {
       //check if item is already added or not
-      fireBaseData.refCart().child(uid).once("value", function(snapshot) {
+      fireBaseData.refCart().child(uid).once("value", function (snapshot) {
 
-        if( snapshot.hasChild(item.$id) == true ){
+        if (snapshot.hasChild(item.$id) == true) {
 
           //if item is already in the cart
           var currentQty = snapshot.child(item.$id).val().item_qty;
 
           fireBaseData.refCart().child(uid).child(item.$id).update({   // update
-            item_qty : currentQty+1
+            item_qty: currentQty + 1
           });
 
-        }else{
+        } else {
 
           //if item is new in the cart
           fireBaseData.refCart().child(uid).child(item.$id).set({    // set
             item_name: item.name,
             item_image: item.image,
-            item_price: item.price,
+            item_description: item.description,
             item_qty: 1
           });
         }
       });
     };
 
-    cart.drop=function(item_id){
+    cart.drop = function (item_id) {
       fireBaseData.refCart().child(uid).child(item_id).remove();
     };
 
-    cart.increment=function(item_id){
+    cart.increment = function (item_id) {
 
       //check if item is exist in the cart or not
-      fireBaseData.refCart().child(uid).once("value", function(snapshot) {
-        if( snapshot.hasChild(item_id) == true ){
+      fireBaseData.refCart().child(uid).once("value", function (snapshot) {
+        if (snapshot.hasChild(item_id) == true) {
 
           var currentQty = snapshot.child(item_id).val().item_qty;
           //check if currentQty+1 is less than available stock
           fireBaseData.refCart().child(uid).child(item_id).update({
-            item_qty : currentQty+1
+            item_qty: currentQty + 1
           });
 
-        }else{
+        } else {
           //pop error
         }
       });
 
     };
 
-    cart.decrement=function(item_id){
+    cart.decrement = function (item_id) {
 
       //check if item is exist in the cart or not
-      fireBaseData.refCart().child(uid).once("value", function(snapshot) {
-        if( snapshot.hasChild(item_id) == true ){
+      fireBaseData.refCart().child(uid).once("value", function (snapshot) {
+        if (snapshot.hasChild(item_id) == true) {
 
           var currentQty = snapshot.child(item_id).val().item_qty;
 
-          if( currentQty-1 <= 0){
+          if (currentQty - 1 <= 0) {
             cart.drop(item_id);
-          }else{
+          } else {
             fireBaseData.refCart().child(uid).child(item_id).update({
-              item_qty : currentQty-1
+              item_qty: currentQty - 1
             });
           }
 
-        }else{
+        } else {
           //pop error
         }
       });
@@ -168,12 +163,11 @@ angular.module('app.services', [])
   }])
 
 
+  .factory('BlankFactory', [function () {
 
-.factory('BlankFactory', [function(){
+  }])
 
-}])
+  .service('BlankService', [function () {
 
-.service('BlankService', [function(){
-
-}]);
+  }]);
 

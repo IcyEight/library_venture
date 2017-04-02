@@ -1,15 +1,27 @@
 <ion-view style="" class=" " id="page1" title="Tabs Controller">
+<<<<<<< HEAD
     <ion-tabs style="" id="tabsController-tabs1" class="tabs-stable  ">
-        
+
 		<ion-tab  id="tabsController-tab1" title="LOGIN"  href="#/page1/page5">
             <ion-nav-view name="tab1"></ion-nav-view>
         </ion-tab>
-		
+
         <ion-tab  id="tabsController-tab3" title="SIGN UP"  href="#/page1/page6">
             <ion-nav-view name="tab3"></ion-nav-view>
         </ion-tab>
-		
-		
     </ion-tabs>
+=======
+  <ion-tabs style="" id="tabsController-tabs1" class="tabs-stable  ">
+
+    <ion-tab id="tabsController-tab1" title="LOGIN" href="#/page1/page5">
+      <ion-nav-view name="tab1"></ion-nav-view>
+    </ion-tab>
+
+    <ion-tab id="tabsController-tab3" title="SIGN UP" href="#/page1/page6">
+      <ion-nav-view name="tab3"></ion-nav-view>
+    </ion-tab>
+
+  </ion-tabs>
+>>>>>>> e9a09b4496ce7f39ae3fe54f9105590fcb30ccc3
 
 </ion-view>

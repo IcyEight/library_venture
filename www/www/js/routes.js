@@ -1,40 +1,39 @@
 angular.module('app.routes', [])
 
-.config(function($stateProvider, $urlRouterProvider) {
+  .config(function ($stateProvider, $urlRouterProvider) {
 
-  // Ionic uses AngularUI Router which uses the concept of states
-  // Learn more here: https://github.com/angular-ui/ui-router
-  // Set up the various states which the app can be in.
-  // Each state's controller can be found in controllers.js
-  $stateProvider
+    // Ionic uses AngularUI Router which uses the concept of states
+    // Learn more here: https://github.com/angular-ui/ui-router
+    // Set up the various states which the app can be in.
+    // Each state's controller can be found in controllers.js
+    $stateProvider
 
 
+      .state('tabsController', {
+        url: '/page1',
+        templateUrl: 'templates/tabsController.html',
+        abstract: true
+      })
 
-  .state('tabsController', {
-    url: '/page1',
-    templateUrl: 'templates/tabsController.html',
-    abstract:true
-  })
+      .state('tabsController.login', {
+        url: '/page5',
+        views: {
+          'tab1': {
+            templateUrl: 'templates/login.html',
+            controller: 'loginCtrl'
+          }
+        }
+      })
 
-  .state('tabsController.login', {
-    url: '/page5',
-    views: {
-      'tab1': {
-        templateUrl: 'templates/login.html',
-        controller: 'loginCtrl'
-      }
-    }
-  })
-
-  .state('tabsController.signup', {
-    url: '/page6',
-    views: {
-      'tab3': {
-        templateUrl: 'templates/signup.html',
-        controller: 'signupCtrl'
-      }
-    }
-  })
+      .state('tabsController.signup', {
+        url: '/page6',
+        views: {
+          'tab3': {
+            templateUrl: 'templates/signup.html',
+            controller: 'signupCtrl'
+          }
+        }
+      })
 
   .state('tabsControllerLib', {
     url: '/page18',
@@ -64,52 +63,52 @@ angular.module('app.routes', [])
 
   .state('menu2', {
       url: '/page7',
-      templateUrl: 'templates/menu2.html',
+      templateUrl: 'templates/upcomingEvents.html',
       controller: 'menu2Ctrl'
     })
 
 
-  .state('offers', {
-    url: '/page8',
-    templateUrl: 'templates/offers.html',
-    controller: 'offersCtrl'
-  })
+      .state('offers', {
+        url: '/page8',
+        templateUrl: 'templates/offers.html',
+        controller: 'offersCtrl'
+      })
 
-  .state('myCart', {
-    url: '/page9',
-    templateUrl: 'templates/myCart.html',
-    controller: 'myCartCtrl'
-  })
+      .state('myCart', {
+        url: '/page9',
+        templateUrl: 'templates/attending.html',
+        controller: 'myCartCtrl'
+      })
 
-  .state('create_event', {
-    url: '/create',
-    templateUrl: 'templates/createEvent.html',
-    controller: 'createEventCtrl'
-  })
+      .state('create_event', {
+        url: '/create',
+        templateUrl: 'templates/createEvent.html',
+        controller: 'createEventCtrl'
+      })
 
-  .state('createList', {
-    url: '/createList',
-    templateUrl: 'templates/createList.html',
-    controller: 'createListCtrl'
-  })
+      .state('createList', {
+        url: '/createList',
+        templateUrl: 'templates/hosting.html',
+        controller: 'createListCtrl'
+      })
 
-  .state('lastOrders', {
-    url: '/page10',
-    templateUrl: 'templates/lastOrders.html',
-    controller: 'lastOrdersCtrl'
-  })
+      .state('lastOrders', {
+        url: '/page10',
+        templateUrl: 'templates/lastOrders.html',
+        controller: 'lastOrdersCtrl'
+      })
 
-  .state('favourite', {
-    url: '/page11',
-    templateUrl: 'templates/favourite.html',
-    controller: 'favouriteCtrl'
-  })
+      .state('favourite', {
+        url: '/page11',
+        templateUrl: 'templates/favourite.html',
+        controller: 'favouriteCtrl'
+      })
 
-  .state('settings', {
-    url: '/page12',
-    templateUrl: 'templates/settings.html',
-    controller: 'settingsCtrl'
-  })
+      .state('settings', {
+        url: '/page12',
+        templateUrl: 'templates/settings.html',
+        controller: 'settingsCtrl'
+      })
 
   .state('library', {
     url: '/page18',
@@ -123,24 +122,23 @@ angular.module('app.routes', [])
     controller: 'supportCtrl'
   })
 
-  .state('checkout', {
-    url: '/page16',
-    templateUrl: 'templates/checkout.html',
-    controller: 'checkoutCtrl'
-  })
+      .state('checkout', {
+        url: '/page16',
+        templateUrl: 'templates/checkout.html',
+        controller: 'checkoutCtrl'
+      })
 
-  .state('tabsController.forgotPassword', {
-    url: '/page15',
-    views: {
-      'tab1': {
-        templateUrl: 'templates/forgotPassword.html',
-        controller: 'forgotPasswordCtrl'
-      }
-    }
-  })
+      .state('tabsController.forgotPassword', {
+        url: '/page15',
+        views: {
+          'tab1': {
+            templateUrl: 'templates/forgotPassword.html',
+            controller: 'forgotPasswordCtrl'
+          }
+        }
+      })
 
-$urlRouterProvider.otherwise('/page1/page5')
+    $urlRouterProvider.otherwise('/page1/page5')
 
 
-
-});
+  });
