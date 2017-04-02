@@ -58,7 +58,7 @@ angular.module('app.routes', [])
   .state('create_event', {
     url: '/create',
     templateUrl: 'templates/createEvent.html',
-    controller: 'createCtrl'
+    controller: 'createEventCtrl'
   })
   
   .state('createList', {

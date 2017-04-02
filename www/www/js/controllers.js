@@ -1,8 +1,27 @@
 angular.module('app.controllers', [])
 
-.controller('loginCtrl', function($scope,$rootScope,$ionicHistory,sharedUtils,$state,$ionicSideMenuDelegate) {
-    $rootScope.extras = false;  // For hiding the side bar and nav icon
+  .service('userEmailStuff', function() {
+   var email = '';
 
+   var setEmail = function(newObj) {
+       email = newObj;
+   };
+
+   var getEmail = function(){
+       return email;
+   };
+
+   return {
+     setEmail: setEmail,
+     getEmail: getEmail
+
+   };
+
+  })
+
+.controller('loginCtrl', function($scope,$rootScope,$ionicHistory,sharedUtils,$state,$ionicSideMenuDelegate, userEmailStuff) {
+    $rootScope.extras = false;  // For hiding the side bar and nav icon
+    $rootScope.userName = "";
     // When the user logs out and reaches login page,
     // we clear all the history and cache to prevent back link
     $scope.$on('$ionicView.enter', function(ev) {
@@ -40,7 +59,10 @@ angular.module('app.controllers', [])
 
           //Email
           firebase.auth().signInWithEmailAndPassword(cred.email,cred.password).then(function(result) {
+                console.log(cred.email);
+                $scope.email = userEmailStuff.setEmail(cred.email);
 
+                console.log("Email: " + $scope.email);
                 // You dont need to save the users session as firebase handles it
                 // You only need to :
                 // 1. clear the login page history from the history stack so that you cant come back
@@ -129,13 +151,16 @@ angular.module('app.controllers', [])
   })
 
 .controller('menu2Ctrl', function($scope,$rootScope,$ionicSideMenuDelegate,fireBaseData,$state,
-                                  $ionicHistory,$firebaseArray,sharedCartService,sharedUtils) {
+                                  $ionicHistory,$firebaseArray, userEmailStuff,sharedCartService,sharedUtils) {
 
   //Check if user already logged in
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
+      //console.log("user: " + user);
       $scope.user_info=user; //Saves data to user_info
-    }else {
+      //$scope.email = userEmailStuff.getEmail();
+      //console.log("menu2Ctrl: " + $scope.email);
+    } else {
 
       $ionicSideMenuDelegate.toggleLeft(); //To close the side bar
       $ionicSideMenuDelegate.canDragContent(false);  // To remove the sidemenu white space
@@ -292,10 +317,51 @@ angular.module('app.controllers', [])
 
 })
 
-.controller('createCtrl',function($scope){
-  alert("Create Event Successfull");
+/*
+{
+    "branch": "Andorra",
+    "date": "04/01/2017",
+    "description": "This program offers drop-in assistance to students struggling to read in 1st through 3rd grades",
+    "host": "hna6300",
+    "id": 0,
+    "image": "literacy",
+    "name": "Sunday Literacy Program",
+    "noAttendance": 30,
+    "time": "1:00 pm",
+    "venue": "Randell"
+  }
+*/
+.controller('createEventCtrl',function($scope, userEmailStuff){
+  //alert("Create Event Successfull");
+  $scope.createEvent = function(event) {
+     // console.log(event);
+     // var name = "testnames";
+     // var description = "testdescriptions"; 
+     var ref = new Firebase("https://test-773a4.firebaseio.com/");
+     var refEvents = ref.child("events")
+     $scope.email = userEmailStuff.getEmail();
+     console.log("createEventCtrl : " + $scope.email);
+     var json = {
+      branch : event.branch,
+      date : event.date,
+      description : event.description,
+      host: $scope.email,
+      image : "default",
+      name : event.name,
+      noAttendance : event.attendance,
+      time : event.time,
+      venue : event.venue
+     }
+     refEvents.push(json, function(error) {
+         if (error) {
+             console.log("Error:", error);
+         }
+         else {
+             console.log("It worked");
+         }
+     });
+  }
 })
-
 .controller('createListCtrl',function($scope, $http){
   alert("Create List Successfull");
   $http.get("https://test-773a4.firebaseio.com/events.json").then(function(response){
