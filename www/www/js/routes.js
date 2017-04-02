@@ -55,6 +55,18 @@ angular.module('app.routes', [])
     controller: 'myCartCtrl'
   })
 
+  .state('create_event', {
+    url: '/create',
+    templateUrl: 'templates/createEvent.html',
+    controller: 'createCtrl'
+  })
+  
+  .state('createList', {
+    url: '/createList',
+    templateUrl: 'templates/createList.html',
+    controller: 'createListCtrl'
+  })
+
   .state('lastOrders', {
     url: '/page10',
     templateUrl: 'templates/lastOrders.html',

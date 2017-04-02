@@ -1,0 +1,31 @@
+<ion-view style="" class=" " id="createList" title="Create List">
+    <ion-content class="has-header" padding="true" style="background: url(img/bg1.jpg) center; background-size: cover;">
+       
+<!--     <div class="row" ng-repeat="createEvent in createEvents" style="border-top: 1px solid #999;"> -->
+		
+   <!--  </div> -->
+    <!-- <ion-item ng-repeat="createEvent in createEvents"> -->
+	<ion-card ng-repeat="createEvent in createEvents">
+		<ion-list>
+			<!-- image -->
+			<p style="text-align:left; color: black;">
+				<span style="font-size: 24px; font-weight: bold;">
+					{{createEvent.name}}
+				</span> <br>
+				{{createEvent.branch}}  &nbsp; &nbsp;
+				{{createEvent.date}} &nbsp; &nbsp;
+				{{createEvent.time}} <br>
+				<span style="font-size: 18px;">
+					{{createEvent.description}}
+				</span>
+			</p>
+		</ion-list>
+	</ion-card>
+		
+	<!-- </div> -->
+   <!--  {{createEvent}} -->
+
+    <!-- </ion-item> -->    
+
+    </ion-content>
+</ion-view>

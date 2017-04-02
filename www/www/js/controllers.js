@@ -292,6 +292,19 @@ angular.module('app.controllers', [])
 
 })
 
+.controller('createCtrl',function($scope){
+  alert("Create Event Successfull");
+})
+
+.controller('createListCtrl',function($scope, $http){
+  alert("Create List Successfull");
+  $http.get("https://test-773a4.firebaseio.com/events.json").then(function(response){
+    //console.log(response);
+    $scope.createEvents = response.data;
+    console.log($scope.createEvents);
+  })
+})
+
 .controller('lastOrdersCtrl', function($scope,$rootScope,fireBaseData,sharedUtils) {
 
     $rootScope.extras = true;
