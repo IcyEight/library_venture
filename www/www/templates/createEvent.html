@@ -1,58 +1,60 @@
 <ion-view style="" class=" " id="create" title="Create Event">
-    <ion-content class="has-header" padding="true">
-        <form name="eventCreateForm" class="list " id="signup-form2">
-            <ion-list class=" " id="signup-list3">
+  <ion-content class="has-header" padding="true">
+    <form name="eventCreateForm" class="list " id="signup-form2">
+      <ion-list class=" " id="signup-list3">
 
-             <label class = "item item-input item-select item-assertive">
-                <div class = "input-label">
-                   Select Branch
-                </div>
-                <select ng-model="event.branch">
-                   <option>Andorra</option>
-                   <option>Tacony</option>
-                   <option>Parkway</option>
-                </select>
-              </label>
+        <label class="item item-input item-select item-assertive">
+          <div class="input-label">
+            Select Branch
+          </div>
+          <select ng-model="event.branch">
+            <option>Andorra</option>
+            <option>Tacony</option>
+            <option>Parkway</option>
+          </select>
+        </label>
 
-              <label class = "item item-input item-select item-assertive">
-                 <div class = "input-label">
-                    Select Venue
-                 </div>
-                 <select ng-model="event.venue">
-                    <option>Main</option>
-                    <option>Randell</option>
-                    <option>Parkway</option>
-                 </select>
-               </label>
+        <label class="item item-input item-select item-assertive">
+          <div class="input-label">
+            Select Venue
+          </div>
+          <select ng-model="event.venue">
+            <option>Main</option>
+            <option>Randell</option>
+            <option>Parkway</option>
+          </select>
+        </label>
 
-              <label class="item item-input item-floating-label">
-                <span style="color: white;"  class="input-label">Name</span>
-                <input style="color: #ffffff;" ng-model="event.name" type="text" placeholder="Name">
-              </label>
+        <label class="item item-input item-floating-label">
+          <span style="color: white;" class="input-label">Name</span>
+          <input style="color: #ffffff;" ng-model="event.name" type="text" placeholder="Name">
+        </label>
 
-              <label class="item item-input item-floating-label">
-                <span style="color: #ffffff;" class="input-label">Description</span>
-                <input style="color: #ffffff;" ng-model="event.description" type="tel" placeholder="Description">
-              </label>
+        <label class="item item-input item-floating-label">
+          <span style="color: #ffffff;" class="input-label">Description</span>
+          <input style="color: #ffffff;" ng-model="event.description" type="tel" placeholder="Description">
+        </label>
 
-              <label class="item item-input item-floating-label">
-                <span style="color: #ffffff;" class="input-label">Time</span>
-                <input style="color: #ffffff;" ng-model="event.time" type="tel" placeholder="Time">
-              </label>
+        <label class="item item-input item-floating-label">
+          <span style="color: #ffffff;" class="input-label">Time</span>
+          <input style="color: #ffffff;" ng-model="event.time" type="tel" placeholder="Time">
+        </label>
 
-              <label class="item item-input item-floating-label">
-                <span style="color: #ffffff;" class="input-label">Date (mm/dd/yyyy)</span>
-                <input style="color: #ffffff;" ng-model="event.date" type="tel" placeholder="Date (mm/dd/yyyy)">
-              </label>
+        <label class="item item-input item-floating-label">
+          <span style="color: #ffffff;" class="input-label">Date (mm/dd/yyyy)</span>
+          <input style="color: #ffffff;" ng-model="event.date" type="tel" placeholder="Date (mm/dd/yyyy)">
+        </label>
 
-              <label class="item item-input item-floating-label">
-                <span style="color: #ffffff;" class="input-label">Estimated Attendance</span>
-                <input style="color: #ffffff;" ng-model="event.attendance" type="tel" placeholder="Estimated Attendance">
-              </label>
+        <label class="item item-input item-floating-label">
+          <span style="color: #ffffff;" class="input-label">Estimated Attendance</span>
+          <input style="color: #ffffff;" ng-model="event.attendance" type="tel" placeholder="Estimated Attendance">
+        </label>
 
-            </ion-list>
-            <div style="width: 279px; height: 35px" class="spacer"></div>
-            <button ng-click="createEvent(event)" class=" button button-assertive  button-block" style="border-radius:0px 0px 0px 0px; margin-bottom: 30px" id="signup-button3">PUBLISH</button>
-        </form>
-    </ion-content>
+      </ion-list>
+      <div style="width: 279px; height: 35px" class="spacer"></div>
+      <button ng-click="createEvent(event)" class=" button button-assertive  button-block"
+              style="border-radius:0px 0px 0px 0px; margin-bottom: 30px" id="signup-button3">PUBLISH
+      </button>
+    </form>
+  </ion-content>
 </ion-view>
