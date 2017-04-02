@@ -164,9 +164,9 @@ angular.module('app.controllers', [])
 
 
 
-  $scope.loadMenu = function() {
+  $scope.loadEvent = function() {
     sharedUtils.showLoading();
-    $scope.menu=$firebaseArray(fireBaseData.refMenu());
+    $scope.events=$firebaseArray(fireBaseData.refEvent());
     sharedUtils.hideLoading();
   }
 

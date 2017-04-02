@@ -270,8 +270,6 @@ margin-top:10px;
 }
 
 
-
-
 /* Support Cover*/
 .support-nav .user-heading {
   /*background: #387ef5;*/
@@ -295,4 +293,8 @@ margin-top:10px;
   height: 110px;
   border-radius: 50%;
   -webkit-border-radius: 50%;
+}
+
+.item-thumbnail-left .item-content .item-image, .item-thumbnail-left .item-content>img:first-child, .item-thumbnail-left .item-image, .item-thumbnail-left>img:first-child {
+  border-radius: initial;
 }

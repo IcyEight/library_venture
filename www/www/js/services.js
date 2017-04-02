@@ -3,6 +3,8 @@ angular.module('app.services', [])
 
 .factory('fireBaseData', function($firebase) {
 	var ref = new Firebase("https://test-773a4.firebaseio.com/"),
+    refEvent = new Firebase("https://test-773a4.firebaseio.com/events"),
+
     refCart = new Firebase("https://test-773a4.firebaseio.com/cart"),
     refUser = new Firebase("https://test-773a4.firebaseio.com/users"),
     refCategory = new Firebase("https://test-773a4.firebaseio.com/category"),
@@ -12,6 +14,9 @@ angular.module('app.services', [])
   return {
     ref: function() {
       return ref;
+    },
+    refEvent: function() {
+      return refEvent;
     },
     refCart: function() {
       return refCart;

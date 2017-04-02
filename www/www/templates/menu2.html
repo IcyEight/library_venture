@@ -1,8 +1,8 @@
 <ion-view style="" class=" " id="page7" title="Upcoming Events">
-  <ion-content class="has-header" padding="false" ng-init="loadMenu()">
+  <ion-content class="has-header" padding="false" ng-init="loadEvent()">
 
 
-    <div class="row" ng-repeat="item in menu" style="border-top: 1px solid #999;">
+    <div class="row" ng-repeat="item in events" style="border-top: 1px solid #999;">
 
       <!--<div class="list">-->
       <!--<div class="item item-thumbnail-left item-text-wrap">-->
@@ -14,15 +14,16 @@
 
       <!--<div class="col"  style="padding:1px;" >-->
       <!--<div class="item item-image" style="border-width: 0px; border-style: none;">-->
-      <div class="item item-thumbnail-left item-text-wrap" style="border-width: 0px; border-style: none;">
-        <img ng-click="showProductInfo(menu[$index].$id)" ng-src="{{'img/fk/'+ menu[$index].image +'.jpg'}}"
+      <div class="item" style="border-width: 0px; border-style: none;">
+        <img ng-click="showProductInfo(events[$index].$id)" ng-src="{{'img/fk/'+ events[$index].image +'.jpg'}}"
              width="100%"/>
         <a class="item item-icon-right assertive" href="#" style="border-width: 0px; border-style: none;">
-          <p ng-click="showProductInfo(menu[$index].$id)" style="font-size: 12px;text-align:left;">
-            {{menu[$index].name}} <br/>
-            <span style="font-weight: bold;color: black;">&#8377; {{menu[$index].price}}</span>
+          <p ng-click="showProductInfo(events[$index].$id)" style="font-size: 12px;text-align:left;">
+             <br/>
+            <span style="font-weight: bold; color: black;">{{events[$index].name}}</span> <br>
+            <span style="color: black;">{{events[$index].description}}</span>
           </p>
-          <i style="font-size: 25px; margin-right:0px;right:0px;" ng-click="addToCart(menu[$index])"
+          <i style="font-size: 25px; margin-right:0px;right:0px;" ng-click="addToCart(events[$index])"
              class="icon ion-ios-cart"></i>
         </a>
       </div>
