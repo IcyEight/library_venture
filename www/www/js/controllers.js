@@ -331,12 +331,12 @@ angular.module('app.controllers', [])
     "venue": "Randell"
   }
 */
-.controller('createEventCtrl',function($scope, userEmailStuff){
+.controller('createEventCtrl',function($scope, userEmailStuff, $ionicPopup){
   //alert("Create Event Successfull");
   $scope.createEvent = function(event) {
      // console.log(event);
      // var name = "testnames";
-     // var description = "testdescriptions"; 
+     // var description = "testdescriptions";
      var ref = new Firebase("https://test-773a4.firebaseio.com/");
      var refEvents = ref.child("events")
      $scope.email = userEmailStuff.getEmail();
@@ -360,7 +360,27 @@ angular.module('app.controllers', [])
              console.log("It worked");
          }
      });
+
+     // alert box
+     var alertPopup = $ionicPopup.alert({
+       title: 'Alert',
+       template: 'Event Successfully Created'
+     });
+     alertPopup.then(function(res) {
+       console.log('Event created! Empty all fields...');
+     });
+
+     console.log(event);
+     event.branch = "";
+     event.venue = "";
+     event.name = "";
+     event.description = "";
+     event.time = "";
+     event.date = "";
+     event.attendance = "";
+     console.log(event);
   }
+
 })
 .controller('createListCtrl',function($scope, $http){
   alert("Create List Successfull");
@@ -697,4 +717,3 @@ angular.module('app.controllers', [])
 
 
   })
-
