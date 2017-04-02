@@ -1,0 +1,63 @@
+<ion-view style="" class=" " id="page12" title="Library">
+    <ion-content class="has-header" padding="false"  >
+
+      <form name="settingForm" class="list " id="settings-form">
+
+        <ion-list class=" " >
+
+          <!-- Profile Cover Page -->
+          <div class="profile-nav col-md-3">
+            <div class="panel">
+              <div class="user-heading round">
+                <a href="#">
+                  <img ng-src="{{&apos;img/fk/&apos;+ user_info.photoURL +&apos;.jpg&apos;}}" >
+                </a>
+                <p style="color: #ffffff;">{{user_info.displayName}}</p>
+              </div>
+            </div>
+          </div>
+
+
+          <label class="item item-input ic-selected">
+            <a class="icon icon-right ion-android-call" style="margin-right: 10px;"></a>
+            <input style="color: #000;" type="text" placeholder="Telephone" value="215-686-5322">
+          </label>
+
+          <label class="item item-input ic-selected">
+            <a class="icon icon-right ion-email" style="margin-right: 10px;"></a>
+            <input style="color: #000;" type="email"  placeholder="Email" value="freelibphilly@pa.com">
+          </label>
+
+          <!--Address Header-->
+          <label class="item item-input ic-selected">
+            <a class="icon icon-right ion-location" style="margin-right: 10px;"></a>
+            <input style="color: #000;" type="text"  placeholder="Address" value="Walnut Street West, 201 S 40th St, Philadelphia, PA 19104">
+          </label>
+
+
+        <div ng-repeat="item in addresses"   >
+          <div class="list card" >
+            <div style="min-height: 30px;" class="item item-divider">
+                <a class="icon icon-right ion-ios-location"></a>
+                {{item.nickname}}
+                <div style="float: right;">
+                  <a ng-click="addManipulation(item)" class="icon icon-right ion-edit" style="font-size: 20px;"></a>
+                  <a ng-click="deleteAddress(item.$id)" class="icon icon-right ion-android-delete" style="font-size: 20px;"></a>
+                </div>
+            </div>
+            <div class="item item-body" >
+
+              <span> {{item.address}} </span>
+              <span>Pin: {{item.pin}}</span>
+              <span>Tel: {{item.phone}}</span>
+
+            </div>
+          </div>
+        </div>
+
+        </ion-list>
+
+      </form>
+    </ion-content>
+
+</ion-view>

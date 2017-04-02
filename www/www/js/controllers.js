@@ -19,6 +19,8 @@ angular.module('app.controllers', [])
 
   })
 
+
+
 .controller('loginCtrl', function($scope,$rootScope,$ionicHistory,sharedUtils,$state,$ionicSideMenuDelegate, userEmailStuff) {
     $rootScope.extras = false;  // For hiding the side bar and nav icon
     $rootScope.userName = "";
@@ -30,9 +32,6 @@ angular.module('app.controllers', [])
         $ionicHistory.clearCache();
       }
     });
-
-
-
 
     //Check if user already logged in
     firebase.auth().onAuthStateChanged(function(user) {
@@ -51,8 +50,6 @@ angular.module('app.controllers', [])
 
 
     $scope.loginEmail = function(formName,cred) {
-
-
       if(formName.$valid) {  // Check if the form data is valid or not
 
           sharedUtils.showLoading();
@@ -87,9 +84,6 @@ angular.module('app.controllers', [])
       }else{
         sharedUtils.showAlert("Please note","Entered data is not valid");
       }
-
-
-
     };
 
 
@@ -210,6 +204,14 @@ angular.module('app.controllers', [])
     // So if you happen to refresh the Offer page, you will get $rootScope.extra = false
     //We need $ionicSideMenuDelegate.canDragContent(true) only on the menu, ie after login page
     $rootScope.extras=true;
+})
+
+.controller('libraryCtrl', function() {
+
+})
+
+.controller('statsCtrl', function() {
+
 })
 
 // to access $root.extras and get_total()

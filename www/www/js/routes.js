@@ -36,6 +36,32 @@ angular.module('app.routes', [])
     }
   })
 
+  .state('tabsControllerLib', {
+    url: '/page18',
+    templateUrl: 'templates/tabsControllerLib.html',
+    abstract:true
+  })
+
+  .state('tabsControllerLib.library', {
+    url: '/page16',
+    views: {
+      'tab2': {
+        templateUrl: 'templates/library.html',
+        controller: 'libraryCtrl'
+      }
+    }
+  })
+
+  .state('tabsControllerLib.stats', {
+    url: '/page17',
+    views: {
+      'tab4': {
+        templateUrl: 'templates/stats.html',
+        controller: 'statsCtrl'
+      }
+    }
+  })
+
   .state('menu2', {
       url: '/page7',
       templateUrl: 'templates/menu2.html',
@@ -60,7 +86,7 @@ angular.module('app.routes', [])
     templateUrl: 'templates/createEvent.html',
     controller: 'createEventCtrl'
   })
-  
+
   .state('createList', {
     url: '/createList',
     templateUrl: 'templates/createList.html',
@@ -83,6 +109,12 @@ angular.module('app.routes', [])
     url: '/page12',
     templateUrl: 'templates/settings.html',
     controller: 'settingsCtrl'
+  })
+
+  .state('library', {
+    url: '/page18',
+    templateUrl: 'templates/tabsControllerLib.html',
+    controller: 'libraryCtrl'
   })
 
   .state('support', {
