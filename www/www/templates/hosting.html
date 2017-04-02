@@ -1,22 +1,27 @@
-<ion-view style="" class=" " id="createList" title="Create List">
-  <ion-content class="has-header" padding="true" style="background: url(img/bg1.jpg) center; background-size: cover;">
+<ion-view style="" class=" " id="page9" title="Hosting">
+  <ion-content class="has-header" padding="true">
+    <!--<button ng-click="checkout()" class="button button-assertive button-block ">Events</button>-->
 
-    <div class="row" ng-repeat="createEvent in createEvents" style="border-top: 1px solid #999;">
-      <div class="item" style="border-width: 0px; border-style: none;">
-        <a class="item" href="#" style="border-width: 0px; border-style: none;">
-          <p style="text-align:left; color: white;">
-		 			<span style="font-size: 24px; font-weight: bold;">
-		 				{{createEvent.name}}
-		 			</span> <br>
-            {{createEvent.branch}} &nbsp; &nbsp;
-            {{createEvent.date}} &nbsp; &nbsp;
-            {{createEvent.time}} <br>
-            <span style="font-size: 18px;">
-		 				{{createEvent.description}}
-		 			</span>
-          </p>
-        </a>
+    <div ng-repeat="item in cart">
+      <div class="list card" ng-if="item.host == 'hna6300'">
+        <div style="min-height: 30px;" class="item item-divider">{{item.name}}</div>
+        <div class="item item-body">
+
+          <img ng-src="{{'img/'+ item.image +'.jpg'}}" width="100%" height="auto" style="box-shadow: none;">
+          <form class="list"></form>
+          <div>
+            <p> {{ item.description}} </p>
+          </div>
+          <div class="button-bar" style="box-shadow: none;">
+            <button ng-click="removeFromCart(item.$id)"
+                    class="button button-assertive button-block button-small icon ion-android-delete"></button>
+            <!--<button class="button button-stable button-clear button-block button-small icon ion-plus" ng-click="inc(item.$id)"></button>-->
+            <!--<button class="button button-stable button-clear button-block button-small">{{item.item_qty}}</button>-->
+            <!--<button class="button button-stable button-clear button-block  icon ion-minus" ng-click="dec(item.$id)" ></button>-->
+          </div>
+        </div>
       </div>
     </div>
+
   </ion-content>
 </ion-view>

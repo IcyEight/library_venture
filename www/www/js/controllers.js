@@ -152,8 +152,8 @@ angular.module('app.controllers', [])
 
   })
 
-  .controller('menu2Ctrl', function ($scope, $rootScope, $ionicSideMenuDelegate, fireBaseData, $state,
-                                     $ionicHistory, $firebaseArray, userEmailStuff, sharedCartService, sharedUtils) {
+  .controller('upcomingEventsCtrl', function ($scope, $rootScope, $ionicSideMenuDelegate, fireBaseData, $state,
+                                              $ionicHistory, $firebaseArray, userEmailStuff, sharedCartService, sharedUtils) {
 
     //Check if user already logged in
     firebase.auth().onAuthStateChanged(function (user) {
@@ -205,13 +205,13 @@ angular.module('app.controllers', [])
 
   })
 
-  .controller('offersCtrl', function ($scope, $rootScope) {
-
-    //We initialise it on all the Main Controllers because, $rootScope.extra has default value false
-    // So if you happen to refresh the Offer page, you will get $rootScope.extra = false
-    //We need $ionicSideMenuDelegate.canDragContent(true) only on the menu, ie after login page
-    $rootScope.extras = true;
-  })
+  // .controller('offersCtrl', function ($scope, $rootScope) {
+  //
+  //   //We initialise it on all the Main Controllers because, $rootScope.extra has default value false
+  //   // So if you happen to refresh the Offer page, you will get $rootScope.extra = false
+  //   //We need $ionicSideMenuDelegate.canDragContent(true) only on the menu, ie after login page
+  //   $rootScope.extras = true;
+  // })
 
 .controller('libraryCtrl', function() {
 
@@ -282,7 +282,7 @@ angular.module('app.controllers', [])
 
   })
 
-  .controller('myCartCtrl', function ($scope, $rootScope, $state, sharedCartService) {
+  .controller('attendingCtrl', function ($scope, $rootScope, $state, sharedCartService) {
 
     $rootScope.extras = true;
 
@@ -292,16 +292,16 @@ angular.module('app.controllers', [])
 
         $scope.cart = sharedCartService.cart_items;  // Loads users cart
 
-        $scope.get_qty = function () {
-          $scope.total_qty = 0;
-          $scope.total_amount = 0;
-
-          for (var i = 0; i < sharedCartService.cart_items.length; i++) {
-            $scope.total_qty += sharedCartService.cart_items[i].item_qty;
-            $scope.total_amount += (sharedCartService.cart_items[i].item_qty * sharedCartService.cart_items[i].item_price);
-          }
-          return $scope.total_qty;
-        };
+        // $scope.get_qty = function () {
+        //   $scope.total_qty = 0;
+        //   $scope.total_amount = 0;
+        //
+        //   for (var i = 0; i < sharedCartService.cart_items.length; i++) {
+        //     $scope.total_qty += sharedCartService.cart_items[i].item_qty;
+        //     $scope.total_amount += (sharedCartService.cart_items[i].item_qty * sharedCartService.cart_items[i].item_price);
+        //   }
+        //   return $scope.total_qty;
+        // };
       }
       //We dont need the else part because indexCtrl takes care of it
     });
@@ -310,45 +310,26 @@ angular.module('app.controllers', [])
       sharedCartService.drop(c_id);
     };
 
-    $scope.inc = function (c_id) {
-      sharedCartService.increment(c_id);
-    };
-
-    $scope.dec = function (c_id) {
-      sharedCartService.decrement(c_id);
-    };
-
-    $scope.checkout = function () {
-      $state.go('checkout', {}, {location: "replace"});
-    };
-
+    // $scope.inc = function (c_id) {
+    //   sharedCartService.increment(c_id);
+    // };
+    //
+    // $scope.dec = function (c_id) {
+    //   sharedCartService.decrement(c_id);
+    // };
+    //
+    // $scope.checkout = function () {
+    //   $state.go('checkout', {}, {location: "replace"});
+    // };
 
   })
 
-  /*
-   {
-   "branch": "Andorra",
-   "date": "04/01/2017",
-   "description": "This program offers drop-in assistance to students struggling to read in 1st through 3rd grades",
-   "host": "hna6300",
-   "id": 0,
-   "image": "literacy",
-   "name": "Sunday Literacy Program",
-   "noAttendance": 30,
-   "time": "1:00 pm",
-   "venue": "Randell"
-   }
-   */
   .controller('createEventCtrl', function ($scope, userEmailStuff, $ionicPopup) {
-    //alert("Create Event Successfull");
     $scope.createEvent = function (event) {
-      // console.log(event);
-      // var name = "testnames";
-      // var description = "testdescriptions";
       var ref = new Firebase("https://test-773a4.firebaseio.com/");
       var refEvents = ref.child("events")
       $scope.email = userEmailStuff.getEmail();
-      console.log("createEventCtrl : " + $scope.email);
+      // console.log("createEventCtrl : " + $scope.email);
       var json = {
         branch: event.branch,
         date: event.date,
@@ -359,7 +340,7 @@ angular.module('app.controllers', [])
         noAttendance: event.attendance,
         time: event.time,
         venue: event.venue
-      }
+      };
       refEvents.push(json, function (error) {
         if (error) {
           console.log("Error:", error);
@@ -390,13 +371,26 @@ angular.module('app.controllers', [])
     }
 
   })
-  .controller('createListCtrl', function ($scope, $http) {
-    alert("Create List Successfull");
-    $http.get("https://test-773a4.firebaseio.com/events.json").then(function (response) {
-      //console.log(response);
-      $scope.createEvents = response.data;
-      console.log($scope.createEvents);
-    })
+
+  .controller('hostingCtrl', function ($scope, $rootScope, $state) {
+
+    $rootScope.extras = true;
+
+    //Check if user already logged in
+    firebase.auth().onAuthStateChanged(function (user) {
+      if (user) {
+
+        var refEvent = new Firebase("https://test-773a4.firebaseio.com/events")
+
+        refEvent.on("value", function(snapshot) {
+          // console.log(snapshot.val());
+          $scope.cart = snapshot.val();
+        }, function (error) {
+          console.log("Error: " + error.code);
+        });
+
+      }
+    });
   })
 
   .controller('lastOrdersCtrl', function ($scope, $rootScope, fireBaseData, sharedUtils) {
@@ -419,8 +413,6 @@ angular.module('app.controllers', [])
         sharedUtils.hideLoading();
       }
     });
-
-
   })
 
   .controller('favouriteCtrl', function ($scope, $rootScope) {

@@ -64,7 +64,7 @@ angular.module('app.routes', [])
   .state('menu2', {
       url: '/page7',
       templateUrl: 'templates/upcomingEvents.html',
-      controller: 'menu2Ctrl'
+      controller: 'upcomingEventsCtrl'
     })
 
 
@@ -77,7 +77,7 @@ angular.module('app.routes', [])
       .state('myCart', {
         url: '/page9',
         templateUrl: 'templates/attending.html',
-        controller: 'myCartCtrl'
+        controller: 'attendingCtrl'
       })
 
       .state('create_event', {
@@ -89,7 +89,7 @@ angular.module('app.routes', [])
       .state('createList', {
         url: '/createList',
         templateUrl: 'templates/hosting.html',
-        controller: 'createListCtrl'
+        controller: 'hostingCtrl'
       })
 
       .state('lastOrders', {
