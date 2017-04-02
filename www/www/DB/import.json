@@ -1,12 +1,4 @@
 {
-  "category" : {
-    "cat01" : "Burger",
-    "cat02" : "Drinks"
-  },
-  "featured" : {
-    "item1" : "slide_1",
-    "item2" : "slide_2"
-  },
   "menu" : {
     "item1" : {
       "available" : true,
