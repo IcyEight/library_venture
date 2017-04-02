@@ -30,7 +30,9 @@ h4:first-child {
 
 p {
   color: #555;
-  margin: 0 0 25px;
+  /*margin: 0 0 25px;*/
+  /*text-align: center;*/
+  /*line-height: 30px;*/
 }
 
 .no-border {

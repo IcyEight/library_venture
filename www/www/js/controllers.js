@@ -217,9 +217,9 @@ angular.module('app.controllers', [])
 
 })
 
-.controller('statsCtrl', function() {
-
-})
+// .controller('statsCtrl', function() {
+//
+// })
 
 // to access $root.extras and get_total()
 .controller('indexCtrl', function($scope,$rootScope,sharedUtils,$ionicHistory,$state,$ionicSideMenuDelegate,sharedCartService) {
@@ -716,6 +716,91 @@ angular.module('app.controllers', [])
       });
 
     };
+
+
+  })
+
+  .controller('statsCtrl', function($scope,$rootScope){
+
+    var pieData = [
+      {
+        value: 20,
+        color:"#FF0000  ",
+      },
+      {
+        value : 40,
+        color : "#4ACAB4  ",
+      }
+    ];
+
+
+// Get the context of the canvas element we want to select
+    var myChart= document.getElementById("pie").getContext("2d");
+    new Chart(myChart).Pie(pieData);
+
+    var lineData = {
+      labels: [ "October", "Novemeber", "December","January", "February", "March", "April"],
+      datasets: [
+        {
+          label: "Attendance Per Month",
+          fill: true,
+          lineTension: 0.1,
+          backgroundColor: "rgba(75,192,192,0.4)",
+          borderColor: "rgba(75,192,192,1)",
+          borderCapStyle: 'butt',
+          borderDash: [],
+          borderDashOffset: 0.0,
+          borderJoinStyle: 'miter',
+          pointBorderColor: "rgba(75,192,192,1)",
+          pointBackgroundColor: "#fff",
+          pointBorderWidth: 1,
+          pointHoverRadius: 5,
+          pointHoverBackgroundColor: "rgba(75,192,192,1)",
+          pointHoverBorderColor: "rgba(220,220,220,1)",
+          pointHoverBorderWidth: 2,
+          pointRadius: 1,
+          pointHitRadius: 10,
+          data: [65, 59, 80, 81, 56, 55, 40],
+          spanGaps: false,
+        }
+      ]
+    };
+
+
+// Get the context of the canvas element we want to select
+    var lineChart= document.getElementById("line").getContext("2d");
+    new Chart(lineChart).Line(lineData);
+
+    var barData = {
+      labels: ["Literacy", "Art", "Stage", "Computer", "Count", "EventT", "EventP"],
+      datasets: [
+        {
+          label: "My First dataset",
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(255, 159, 64, 0.2)'
+          ],
+          borderColor: [
+            'rgba(255,99,132,1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 159, 64, 1)'
+          ],
+          borderWidth: 1,
+          data: [65, 59, 80, 81, 56, 55, 40],
+        }
+      ]
+    };
+
+// Get the context of the canvas element we want to select
+    var barChart= document.getElementById("bar").getContext("2d");
+    new Chart(barChart).Bar(barData);
 
 
   })
