@@ -79,7 +79,6 @@ angular.module('app.services', [])
 
     var cart={}; // the main Object
 
-
     //Check if user already logged in
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
@@ -87,8 +86,6 @@ angular.module('app.services', [])
         cart.cart_items = $firebaseArray(fireBaseData.refCart().child(uid));
       }
     });
-
-
 
 
     //Add to Cart
@@ -111,7 +108,7 @@ angular.module('app.services', [])
           fireBaseData.refCart().child(uid).child(item.$id).set({    // set
             item_name: item.name,
             item_image: item.image,
-            item_price: item.price,
+            item_description: item.description,
             item_qty: 1
           });
         }

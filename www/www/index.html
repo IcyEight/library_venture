@@ -103,7 +103,7 @@
                 <ion-nav-buttons side="right">
                   <!-- #3.  $root.extras -->
                   <!-- #4.  get_total() -->
-                  <button ui-sref="myCart" ng-if="$root.extras" class="button button-icon button-clear ion-ios-cart-outline">
+                  <button ui-sref="myCart" ng-if="$root.extras" class="button button-icon button-clear ion-briefcase">
                     {{get_total()}}
                   </button>
                 </ion-nav-buttons>
@@ -116,7 +116,7 @@
         <ion-side-menu side="left" id="side-menu21" ng-if="$root.extras">
 
             <ion-header-bar class="expanded">
-              <img ng-src="{{&apos;img/fk/&apos;+ user_info.photoURL +&apos;.jpg&apos;}}" class="avatar motion spin fade">
+              <img ng-src="{{&apos;img/&apos;+ user_info.photoURL +&apos;.jpg&apos;}}" class="avatar motion spin fade">
               <div class="menu-bottom">
                 {{user_info.displayName}}
               </div>
@@ -129,10 +129,9 @@
                     <ion-item data-componentid="list-item2" style="" menu-close="" ui-sref="create_event" id="menu-list-item2" class="item-icon-left  ">
                         <i class="icon ion-compose"></i>Create Event</ion-item>
                     <ion-item data-componentid="list-item8" style="" menu-close="" ui-sref="myCart" id="menu-list-item3" class="item-icon-left  ">
-                        <i class="icon ion-person"></i>Join List</ion-item>
+                        <i class="icon ion-person"></i>Attending</ion-item>
                     <ion-item data-componentid="list-item11" style="" menu-close="" ui-sref="createList" id="menu-list-item11" class="item-icon-left  ">
-                        <i class="icon ion-person"></i>Create List</ion-item>
-
+                        <i class="icon ion-paintbrush"></i>Hosting</ion-item>
                     <!--<ion-item data-componentid="list-item3" style="" menu-close="" ui-sref="lastOrders" id="menu-list-item4" class="item-icon-left  ">-->
                         <!--<i class="icon ion-ios-clock-outline"></i>Orders</ion-item>-->
                     <!--<ion-item data-componentid="list-item4" style="" menu-close="" ui-sref="favourite" id="menu-list-item5" class="item-icon-left  ">-->

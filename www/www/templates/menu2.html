@@ -14,19 +14,41 @@
 
       <!--<div class="col"  style="padding:1px;" >-->
       <!--<div class="item item-image" style="border-width: 0px; border-style: none;">-->
-      <div class="item" style="border-width: 0px; border-style: none;">
-        <img ng-click="showProductInfo(events[$index].$id)" ng-src="{{'img/fk/'+ events[$index].image +'.jpg'}}"
-             width="100%"/>
-        <a class="item item-icon-right assertive" href="#" style="border-width: 0px; border-style: none;">
-          <p ng-click="showProductInfo(events[$index].$id)" style="font-size: 12px;text-align:left;">
-             <br/>
-            <span style="font-weight: bold; color: black;">{{events[$index].name}}</span> <br>
-            <span style="color: black;">{{events[$index].description}}</span>
-          </p>
-          <i style="font-size: 25px; margin-right:0px;right:0px;" ng-click="addToCart(events[$index])"
-             class="icon ion-ios-cart"></i>
-        </a>
-      </div>
+      <!--<div class="item" style="border-width: 0px; border-style: none;">-->
+        <!--<img ng-click="showProductInfo(events[$index].$id)" ng-src="{{'img/fk/'+ events[$index].image +'.jpg'}}"-->
+             <!--width="100%"/>-->
+        <!--<a class="item item-icon-right assertive" href="#" style="border-width: 0px; border-style: none;">-->
+          <!--<p ng-click="showProductInfo(events[$index].$id)" style="font-size: 12px;text-align:left;">-->
+             <!--<br/>-->
+            <!--<span style="font-weight: bold; color: black;">{{events[$index].name}}</span> <br>-->
+            <!--<span style="color: black;">{{events[$index].description}}</span> <br>-->
+            <!--<span style="color: black;">{{events[$index].branch}}</span> <br>-->
+            <!--<span style="color: black;">{{events[$index].date}}</span>-->
+            <!--<span style="color: black;">{{events[$index].time}}</span>-->
+            <!--<span style="color: black;">{{events[$index].host}}</span>-->
+            <!--<span style="color: black;">{{events[$index].noAttendance}}</span>-->
+            <!--<span style="color: black;">{{events[$index].venue}}</span>-->
+          <!--</p>-->
+          <!--<i style="font-size: 25px; margin-right:0px;right:0px;" ng-click="addToCart(events[$index])"-->
+             <!--class="icon ion-plus"></i>-->
+        <!--</a>-->
+      <!--</div>-->
+
+      <div class="card">
+        <div class="item item-avatar">
+          <img src="/img/default_dp.jpg">
+          <h2>{{events[$index].name}}</h2>
+          <i style="display:inline-block; position:absolute; right:25px; font-size:25px" ng-click="addToCart(events[$index])"
+             class="icon ion-plus"></i>
+          <h3>Branch: {{events[$index].branch}}</h3>
+          <h3>Date: {{events[$index].date}} {{events[$index].time}}</h3>
+        </div>
+        <div class="item item-body">
+          <img ng-click="showProductInfo(events[$index].$id)" ng-src="{{'img/'+ events[$index].image +'.jpg'}}"
+               width="100%"/>
+          <br>
+          <p style="color: black;">{{events[$index].description}}</p>
+        </div>
       <!--</div>-->
 
 
