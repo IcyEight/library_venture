@@ -5,3 +5,4 @@ To run app run: :+1:
  ionic serve
 ```
 * email: test@drexel.edu pw: test1234 
+Check if Visual Studio commit/push is possible
