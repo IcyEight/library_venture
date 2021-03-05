@@ -1,8 +1,1 @@
-To run app run: :+1:
-
-```bash
- cd library_venture/www/
- ionic serve
-```
-* email: test@drexel.edu pw: test1234 
-Check if Visual Studio commit/push is possible
+This is a mobile app that allows users to book public library rooms for social workshops, join events and get report on event registration. This project uses Ionic, Firebase.
